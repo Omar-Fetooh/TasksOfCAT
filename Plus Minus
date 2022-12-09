@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string.h>
+#include <algorithm>
+#include <math.h>
+#include <iomanip>
+#include <climits>
+using namespace std;
+int   arr[100];
+void plusMinus(int arr[], int size)
+{
+    double ratioplus = 0.0, ratiominus = 0.0, ratiozero = 0.0;
+    double sumplus = 0.0, summinus = 0.0, sumzero = 0.0;
+    for (int i = 0;i < size;i++)
+    {
+        if (arr[i] > 0)
+        {
+            sumplus++ ;
+        }
+        else if (arr[i] < 0)
+        {
+            summinus++;
+        }
+        else
+        {
+            sumzero++;
+        }
+    }
+    ratioplus = sumplus / size;
+    ratiominus = summinus / size;
+    ratiozero = sumzero / size;
+    cout << ratioplus << endl
+        << ratiominus << endl
+        << ratiozero << endl;
+}
+
+int main()
+{
+    cin.tie(0);
+    cin.sync_with_stdio(0);
+    int n;
+    cin >> n;
+    for (int i = 0;i < n;i++)
+    {
+        cin >> arr[i];
+    }
+    double ratioplus = 0.0, ratiominus = 0.0, ratiozero = 0.0;
+    cout << fixed << setprecision(6);
+    plusMinus(arr, n);
+    return 0; 
+}
