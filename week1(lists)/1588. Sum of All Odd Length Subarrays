@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int sumOddLengthSubarrays(vector<int>& arr) {
+        int n=arr.size();
+        int pref[n];
+        int sum=0;
+        pref[0]=arr[0];
+        for(int i=1;i<n;i++)
+        {
+            pref[i]=pref[i-1]+arr[i];
+        }
+        sum+=pref[n-1];  //pref[4]
+        for(int i=3;i<=n;i+=2)   // 3  5 
+        {
+            sum+=pref[i-1];      
+            for(int j=0;j<n-i;j++)    //  0 1    //  0
+            {
+                sum+=pref[i+j]-pref[j];
+            }
+        }
+        return sum;
+    }
+};
