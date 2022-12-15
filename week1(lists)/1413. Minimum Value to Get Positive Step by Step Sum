@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int minStartValue(vector<int>& nums) {
+        int size=nums.size();
+        int prefix_sum[size];
+        prefix_sum[0]=nums[0];
+        for(int i=1;i<nums.size();i++)
+        {
+            prefix_sum[i]=prefix_sum[i-1]+nums[i];
+        }
+        sort(prefix_sum,prefix_sum+size);
+        if(prefix_sum[0]>0)
+        {
+            return 1;
+        }
+        int startValue=abs(prefix_sum[0])+1;
+        return startValue;
+    }
+};
