@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int largestAltitude(vector<int>& gain) {
+        int highest=0;
+        int n=gain.size();
+        int pref[n+1];
+        pref[0]=0;
+        for(int i=1;i<=n;i++)  //1 2 3 4 5 
+        {
+            pref[i]=pref[i-1]+gain[i-1];  //pref[5]=pref[4]+gain[4]
+        }
+        sort(pref,pref+n+1);
+        return pref[n];
+    }
+};
