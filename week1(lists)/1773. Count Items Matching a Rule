@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int countMatches(vector<vector<string>>& arr, string ruleKey, string ruleValue) {
+        int rows=arr.size();
+        int counter=0;
+        if(ruleKey=="type")
+        {
+            for(int i=0;i<rows;i++)
+            {
+                if(arr[i][0]==ruleValue) ++counter;
+            }
+        }
+        else if (ruleKey=="color")
+        {
+            for(int i=0;i<rows;i++)
+            {
+                if(arr[i][1]==ruleValue) ++counter;
+            }
+        }
+        else if (ruleKey=="name")
+        {
+            for(int i=0;i<rows;i++)
+            {
+                if(arr[i][2]==ruleValue) ++counter;
+            }
+        }
+        return counter;
+    }
+};
