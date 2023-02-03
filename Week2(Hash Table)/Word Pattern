@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool wordPattern(string pattern, string s) {
+     map<char,string>chartostring   ;
+     map<string,char>stringtochar;
+     vector<string>v;
+     string word;
+     stringstream iss(s);
+     while(iss>>word)
+     {
+         v.push_back(word);
+     }
+     if(v.size()!=pattern.size()) return false;
+     for(int i=0;i<pattern.size();i++)
+     {
+         string word =v[i];
+        if(chartostring[pattern[i]]!="" &&chartostring[pattern[i]]!=word)
+        {
+            return false;
+        }
+        if(stringtochar[word]&&stringtochar[word]!=pattern[i]) return false;
+        
+        chartostring[pattern[i]]=v[i];
+        stringtochar[v[i]]=pattern[i];
+     }
+     return true;
+    }
+};
