@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int titleToNumber(string columnTitle) {
+         map<char,int> mp;
+    for(int i='A';i<='Z';i++)
+    {
+        mp[i]=(int)i-64;
+    }
+    int size=columnTitle.size();
+    unsigned int sum=0;
+      int i=0;
+    while(size>0)
+    {
+        sum+=mp[columnTitle[i]]*pow(26,size-1);
+        size--;
+        ++i;
+    }
+    return sum;
+    }
+};
