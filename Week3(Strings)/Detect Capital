@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        bool flag =false;
+        if(word[0]>64&&word[0]<91&&word[1]>64&&word[1]<91)
+        {
+            for(int i=2;i<word.size();i++)
+            {
+                if(word[i]>96&&word[i]<123) return false;       ///CCs
+            }
+        }
+        else if (word[0]>64&&word[0]<91&&word[1]>96&&word[1]<123)    
+        {
+            for(int i=2;i<word.size();i++)
+            {
+                if(word[i]>64&&word[i]<91) return false;         ///CsC
+            }
+        }
+        else  if(word[0]>96&&word[0]<123)
+        {
+            for(int i=1;i<word.size();i++)
+            {
+                if(word[i]>64&&word[i]<91)  return false;
+            }
+        }
+        return true;
+    }
+};
