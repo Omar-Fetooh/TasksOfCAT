@@ -1,0 +1,46 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char>st;
+             // Iterate through each character in the string
+      
+    for (int i = 0; i < s.length(); i++) {
+        char ch = s[i];
+
+        // If the character is an opening bracket, push it onto the stack
+        if (ch == '(' || ch == '{' || ch == '[') {
+            st.push(ch);
+        }
+        // If the character is a closing bracket, check if it matches the top element on the stack
+        else {
+            // If the stack is not empty
+            if (!st.empty()) {
+                // Get the top element on the stack
+                char top = st.top();
+                // If the closing bracket matches the top element on the stack, pop the top element
+                if ((ch == ')' && top == '(') ||
+                    (ch == '}' && top == '{') ||
+                    (ch == ']' && top == '[')) {
+                    st.pop();
+                }
+                // If the closing bracket does not match the top element on the stack, return false
+                else {
+                    return false;
+                }
+            }
+            // If the stack is empty and a closing bracket is encountered, return false
+            else {
+                return false;
+            }
+        }
+    }
+    // If the stack is empty at the end, return true
+    if (st.empty()) {
+        return true;
+    }
+    // If the stack is not empty at the end, return false
+    else {
+        return false;
+    }  
+    }
+};
