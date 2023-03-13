@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        vector<int> ans;
+        vector<int> temp;
+        map<int,int> mp;
+        for(int x:arr1) mp[x]++;
+        
+        for(int x:arr2){
+            if(mp[x]>0){
+                while(mp[x]){
+                    ans.push_back(x);
+                    mp[x]--;
+                }
+            }
+        }
+        sort(arr1.begin(),arr1.end());
+        for(int x:arr1){
+            if(mp[x]>0){
+                while(mp[x]){
+                    ans.push_back(x);
+                    mp[x]--;
+                }
+            }
+        }
+        return ans;
+    }
+};
